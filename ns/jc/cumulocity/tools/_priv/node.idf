@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">interface</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">jc.cumulocity.tools._priv</value>
+  <value name="is_public">false</value>
+  <value name="shared">cHJpdmF0ZSBzdGF0aWMgU3RyaW5nIF9URU1QX0FQUF9JRCA9IG51bGw7Cgpwcml2YXRlIHN0YXRp
+YyBTdHJpbmcgX3VybCA9IG51bGw7CnByaXZhdGUgc3RhdGljIFN0cmluZyBfYnRlbmFudCA9IG51
+bGw7CnByaXZhdGUgc3RhdGljIFN0cmluZyBfYnVzZXIgPSBudWxsOwpwcml2YXRlIHN0YXRpYyBT
+dHJpbmcgX2JwYXNzd29yZCA9IG51bGw7CnByaXZhdGUgc3RhdGljIFN0cmluZyBfdGVuYW50ID0g
+bnVsbDsKcHJpdmF0ZSBzdGF0aWMgU3RyaW5nIF91c2VyID0gbnVsbDsKcHJpdmF0ZSBzdGF0aWMg
+U3RyaW5nIF9wYXNzd29yZCA9IG51bGw7Cgpwcml2YXRlIHN0YXRpYyBTdHJpbmcgY3VycmVudElT
+Tzg2MDFUaW1lU3RyaW5nKCkgewoJCglyZXR1cm4gbmV3IFNpbXBsZURhdGVGb3JtYXQoInl5eXkt
+TU0tZGQnVCdISDptbTpzcy5TU1NYWFgiKS5mb3JtYXQobmV3IERhdGUoKSk7Cn0=</value>
+  <value name="encodeutf8">true</value>
+  <value name="extends"></value>
+  <array name="implements" type="value" depth="1">
+  </array>
+  <array name="imports" type="value" depth="1">
+    <value>java.text.SimpleDateFormat</value>
+    <value>java.util.ArrayList</value>
+    <value>java.util.Date</value>
+    <value>java.util.HashMap</value>
+    <value>java.util.List</value>
+    <value>java.util.Map</value>
+    <value>java.util.StringTokenizer</value>
+    <value>com.jc.wm.introspection.APIInfo</value>
+    <value>com.jc.wm.introspection.PackageIntrospector</value>
+    <value>com.wm.app.b2b.server.ServerAPI</value>
+    <value>com.wm.app.b2b.server.ServerStartupNotifier</value>
+  </array>
+</Values>
