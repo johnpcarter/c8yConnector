@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="wm.server:ping">Anonymous</value>
+  <value name="jc.cumulocity.tools._priv:envProperties">Anonymous</value>
+  <value name="jc.cumulocity.tools.app:health">Anonymous</value>
+  <value name="jc.cumulocity.tools._priv:setProperties">Anonymous</value>
+  <value name="jc.cumulocity.tools.app:credentials">Anonymous</value>
+  <value name="jc.philips.c8y.agent_.services">Anonymous</value>
+  <value name="wm.server:login">Anonymous</value>
+  <value name="wm">Internal</value>
+</Values>
