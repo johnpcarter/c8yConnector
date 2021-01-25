@@ -39,20 +39,20 @@ USER sagadmin
 
 # ensures that apache proxy gets started before MSR
 
-	ADD --chown=sagadmin ./msr-docker-init.sh docker-init.sh
+	ADD --chown=sagadmin ./msr-docker-init.sh /docker-init.sh
 
 # Add heath checker and fix volume directory issue 
 
-	ADD  --chown=sagadmin:sagadmin docker-health-check.sh ./
+	ADD  --chown=sagadmin:sagadmin ./docker-health-check.sh /docker-health-check.sh
 	
 # Need to run as root so that apache proxy can use port 80!
 	
 USER root
 
-ENTRYPOINT ["./docker-init.sh"]
+ENTRYPOINT ["/docker-init.sh"]
 
 HEALTHCHECK --interval=30s --timeout=30s --start-period=60s --retries=6 \
-	CMD ./docker-health-check.sh
+	CMD /docker-health-check.sh
 			
 			
 			
