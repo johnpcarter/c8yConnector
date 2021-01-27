@@ -11,21 +11,21 @@ This source code is a webMethods Micro Service Runtime package and you will need
 
 If you have an Integration Server or Micro Service Runtime running locally for development purposes, first navigate to your packages directory;
 
-$ cd /${SAG_HOME}/IntegrationServer/packages
+*$cd /${SAG_HOME}/IntegrationServer/packages*  
 or
-$ cd /${SAG_HOME}/IntegrationServer/instances/${INSTANCE}/packages
+*$cd /${SAG_HOME}/IntegrationServer/instances/${INSTANCE}/packages*  
 
 If your packages directory is already under version control
 
-$ git submodule add https://github.com/johnpcarter/c8yConnector.git c8yConnector.git
+*$git submodule add https://github.com/johnpcarter/c8yConnector.git c8yConnector.git*  
 
 or if you are not, then simply clone the repository
 
-$ git clone https://github.com/johnpcarter/c8yConnector.git
+*$git clone https://github.com/johnpcarter/c8yConnector.git*  
 
 Then download dependent packages
 
-$ git clone https://github.com/johnpcarter/JcPublicTools.git
+*$git clone https://github.com/johnpcarter/JcPublicTools.git*  
 
 Then restart your runtime server and refresh your package browser in Designer.
 
