@@ -1,7 +1,7 @@
 ##c8yConnector
 
 Provides a set of services to allow access to your c8y tenant. Use in conjunction with your webMethods based agents to integrate any device type with Cumulocity. 
-The services are documented in Designer under the comments section of each service and from the packages [home directory /c8yConnector](http://localhost:5555/c8yConnectory). You can also view [online](https://raw.githack.com/johnpcarter/c8yConnector/main/pub/index.html).
+The services are documented in Designer under the comments section of each service and from the packages [home](http://localhost:5555/c8yConnector) directory /c8yConnector. You can also view [online](https://raw.githack.com/johnpcarter/c8yConnector/main/pub/index.html).
 
 **Installation**
 
