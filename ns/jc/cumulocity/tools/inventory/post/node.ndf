@@ -150,7 +150,20 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.inventory:post##
+
+Posts an arbitrary managed object to all c8y tenants subscribing to your application, returns the c8y id of the managed object for the last tenant only
+
+**NOTE** - This service does not validate if the object already exists, do not use this service if you want to add a device or group to Cumulocity,
+instead use the services 'jc.cumulocity.tools.inventory:registerDevice' or 'jc.cumulocity.tools.inventory:registerDevice
+
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+object - The c8y Managed Object to be added.
+args - Optional custom attributes to be included in event, can be string, number, boolean or even complex document types.
+
+**OUTPUT**
+c8yIdOfObject - the c8y internal id of the new object, return only last instance if posting to multiple instances.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

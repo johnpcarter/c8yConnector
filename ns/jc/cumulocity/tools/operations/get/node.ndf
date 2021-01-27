@@ -115,7 +115,20 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.operations:get##
+
+Retrieves all operations found for the given device. The device can be specified via its c8y internal id or one of the devices external id's.
+events are returned in pages. You can specify both the page size and the current page to return via the pageSize (default is 50) and currentPage (default is 1) inputs respectively.
+
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+deviceId - Either the internal c8y id or external id of the device.
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of events to return in a single request, default is 50 if blank
+
+**OUTPUT**
+events - List of operations of associated with given device, limited to page size.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

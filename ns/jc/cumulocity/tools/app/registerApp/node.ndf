@@ -184,8 +184,12 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">Creates a new app reference in c8y. 
-Only use this service if your agent is running outside of the cumulocity tenant, otherwise will not be able obtain a bootstrap user nor will tenants be able to subscribe to it.</value>
+  <value name="node_comment">##jc.cumulocity.tools.app:registerApp##
+
+Creates a new app reference in c8y. You should only use this if you want to create your app automatically from a remote server.
+Cumulocity hosted micro services have to be declared in advance of upload and hence this service is not needed.
+
+This step is required so that you can obtain a bootstrap user for your micro service application/agent.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

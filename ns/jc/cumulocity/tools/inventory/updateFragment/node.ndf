@@ -203,7 +203,16 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.inventory:updateFragment##
+
+Updates the given custom fragments in the managed object.
+
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+args - Custom attributes to be included in object, can be string, number, boolean or even complex document types.
+
+**OUTPUT**
+none</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

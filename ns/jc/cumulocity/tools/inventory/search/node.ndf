@@ -134,7 +134,24 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.inventory:search##
+
+Retrieves a list of paged managed objects from Cumulocity matching the given set of queries.
+ 
+**INPUTS**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first avaible tenant.
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum numer of events to return in a single request, default is 50 if blank
+queries
+  - queries/queries 
+	queries/queries/lh - left hand argument of query i.e. namespace of attribute in managed object using dot as name seperator. Not required in the case of the 'has' operator.
+	queries/queries/op - Either 'eq', 'ne' for not equal or 'lt' for less than or 'gt' for greater than and 'has'
+	queries/queries/rh - value to be matched with left hand side or in the case of 'has' the element or fragment that must be present.
+	queries/queries/exclusive - Only required if you want to make this query an 'OR' i.e. will not be considered a mandatory query like the others.
+  - queries/matchAll - true if all queries must match, false if only one of the queries need match
+
+**OUTPUT**
+results - A page of managed object matching the queries.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

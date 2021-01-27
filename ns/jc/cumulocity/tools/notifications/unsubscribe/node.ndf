@@ -92,7 +92,17 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.notifications:unsubscribe##
+
+Unsubscribes from real time notifications for the given device/agent
+
+**INPUT**
+tenant - Only provide if you want to only update to listen for updates from a specific tenants, otherwise first available is used.
+c8yIdOfAgent - c8y internal of the managed object that represents the agent/device to which we have child devices attached.
+pollingInterval - Optional, leave blank to use c8y real time polling, otherwise specify the delay in seconds between each batch based polling.
+
+**OUTPUT**
+none</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

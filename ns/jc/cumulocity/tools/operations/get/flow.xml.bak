@@ -14,21 +14,6 @@
 </MAP>
 </INVOKE>
 
-<LOOP TIMEOUT="" IN-ARRAY="/credentials/users">
-  <COMMENT></COMMENT>
-
-  <!-- nodes -->
-
-<BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
-  <COMMENT>get alarms for specified tenant</COMMENT>
-
-  <!-- nodes -->
-
-<SEQUENCE NAME="%tenant% == $null || %credentials/users/tenant% == %tenant%" TIMEOUT="" EXIT-ON="FAILURE">
-  <COMMENT></COMMENT>
-
-  <!-- nodes -->
-
 <BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
   <COMMENT>if IDType not internal, lookup internalID first!</COMMENT>
 
@@ -362,17 +347,6 @@
         <value name="modifiable">true</value>
         <value name="rec_ref">jc.cumulocity.tools.app.docs:Credentials</value>
       </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">unknown</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">$iteration</value>
-        <value name="field_type">string</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -417,12 +391,6 @@
 </DATA>
 </MAPSET>
 
-<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/users;2;0/password;1;0" TO="/auth;2;0/pass;1;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/users;2;0/name;1;0" TO="/auth;2;0/user;1;0">
-</MAPCOPY>
-
 <MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/url;1;0">
   <DATA ENCODING="XMLValues" I18N="true">
 
@@ -450,6 +418,12 @@
 </Values>
 </DATA>
 </MAPSET>
+
+<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/defaultUser;1;0" TO="/auth;2;0/user;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/defaultPassword;1;0" TO="/auth;2;0/pass;1;0">
+</MAPCOPY>
 </MAP>
 
 <MAP MODE="OUTPUT">
@@ -1218,17 +1192,6 @@
         <value name="modifiable">true</value>
         <value name="rec_ref">jc.cumulocity.tools.app.docs:Credentials</value>
       </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">unknown</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">$iteration</value>
-        <value name="field_type">string</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -1273,12 +1236,6 @@
 </DATA>
 </MAPSET>
 
-<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/users;2;0/password;1;0" TO="/auth;2;0/pass;1;0">
-</MAPCOPY>
-
-<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/users;2;0/name;1;0" TO="/auth;2;0/user;1;0">
-</MAPCOPY>
-
 <MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/url;1;0">
   <DATA ENCODING="XMLValues" I18N="true">
 
@@ -1306,6 +1263,12 @@
 </Values>
 </DATA>
 </MAPSET>
+
+<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/defaultUser;1;0" TO="/auth;2;0/user;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/defaultPassword;1;0" TO="/auth;2;0/pass;1;0">
+</MAPCOPY>
 </MAP>
 
 <MAP MODE="OUTPUT">
@@ -1702,9 +1665,6 @@
 </MAPDELETE>
 </MAP>
 </INVOKE>
-</SEQUENCE>
-</BRANCH>
-</LOOP>
 
 <MAP TIMEOUT="" MODE="STANDALONE">
   <COMMENT>cleanup</COMMENT>

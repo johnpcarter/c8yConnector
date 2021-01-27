@@ -344,7 +344,26 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.inventory:createGroup##
+
+Creates a new group in Cumulocity. You can specify a top level folder or create a sub-folder in a parent folder if you provide the c8y internal id of the parent
+via the optional input parent. 
+
+**NOTE** The service first checks if an asset with the given external id exists already, in which case it does nothing.
+
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+id - External id of the group to be created.
+name - label to be associated with the group.
+description - optional text set to c8y_Notes in c8y.
+args - Optional custom attributes to be included in event, can be string, number, boolean or even complex document types.
+position - Optional GPS position to be saved as c8y_Position in the managed object.
+parent/c8yId - Internal id of an optional parent group. If provided this group will be added as a sub group and only visible via 
+the parent group hierarchy.
+
+**OUTPUT**
+groupId - the c8y internal id of the new event, return only last instance if posting to multiple instances.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

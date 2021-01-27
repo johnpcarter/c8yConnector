@@ -45,7 +45,7 @@
             <value name="field_password">false</value>
           </record>
           <value name="is_public">false</value>
-          <value name="field_name">device</value>
+          <value name="field_name">object</value>
           <value name="field_type">recref</value>
           <value name="field_dim">0</value>
           <value name="wrapper_type">IData</value>
@@ -131,7 +131,17 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.inventory:update##
+
+Updates an existing managed object in all c8y tenants subscribing to your application.
+
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+object - The c8y Managed Object to be updated.
+args - Optional custom attributes to be included in object, can be string, number, boolean or even complex document types.
+
+**OUTPUT**
+none</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

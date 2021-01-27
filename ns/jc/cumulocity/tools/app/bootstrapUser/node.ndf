@@ -132,10 +132,13 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">Retrieves the app boostrap user credentials, which are then used to fetch app subscriptions and the their app credentials. You should not need to use this service as it is integrated 
-with the jc.cumulocity.tools.app:credentials service.
+  <value name="node_comment">##jc.cumulocity.tools.app:bootstrapUser##
 
-Refer to https://cumulocity.com/guides/microservice-sdk/concept/#security for more information
+Retrieves the app bootstrap user credentials, which are then used to fetch app subscriptions and the their app credentials. 
+
+**NOTE** - You should not need to use this service as it is integrated with the jc.cumulocity.tools.app:credentials service.
+
+Refer to the section on [Micro Service security](https://cumulocity.com/guides/microservice-sdk/concept/#security) for more information.
 </value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>

@@ -8690,5 +8690,11 @@
 
 <MAPDELETE FIELD="/lastError;4;0;pub.event:exceptionInfo">
 </MAPDELETE>
+
+<MAPDELETE FIELD="/internalId;1;0">
+</MAPDELETE>
+
+<MAPDELETE FIELD="/assetType;1;0">
+</MAPDELETE>
 </MAP>
 </FLOW>

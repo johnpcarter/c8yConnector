@@ -115,7 +115,19 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.inventory:get##
+
+Retrieves the managed object (group/device etc) in Cumulocity for the given id.
+
+**NOTE** - Will trigger exception if the object does not exist!
+
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+id - External id of the object to be fetched.
+
+**OUTPUT**
+managedObject - The managed object in c8y matching the given id.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

@@ -4,7 +4,7 @@
   <value name="node_type">restDescriptor</value>
   <value name="node_subtype">restv2Descriptor</value>
   <value name="node_nsName">jc.cumulocity:tools</value>
-  <value name="node_pkg">JcCumulocityTools</value>
+  <value name="node_pkg">c8yConnector</value>
   <value name="is_public">false</value>
   <record name="generalInfo" javaclass="com.wm.util.Values">
     <value name="specVersion">2.0</value>
@@ -265,16 +265,17 @@
         <record name="GET" javaclass="com.wm.util.Values">
           <value name="operationType">GET</value>
           <value name="nsName">/admin_GET</value>
-          <value name="description">Retrieve all subscriptions to this agent via a GET request using bootstrap credentials.
+          <value name="description">##jc.cumulocity.tools.app:credentials##
+
+Retrieve all subscriptions to this agent via a GET request using bootstrap credentials.
 Credentials provider tenant information and the logins to be used in order to connect to each c8y tenant.
 
 The default user/password refers to the first tenant found in the list and should be used when querying as long
 as any updates have been written to all tenants.
 
-refer to https://cumulocity.com/guides/microservice-sdk/concept/#isolation-levels
-for more information.
+refer to the cumulocity documentation on [multi tenant micro services](https://cumulocity.com/guides/microservice-sdk/concept/#isolation-levels) for more information.
 
-You do NOT need to call this service prior to invoking any of the other c8y services.</value>
+** NOTE ** - You do NOT need to call this service prior to invoking any of the other c8y services.</value>
           <array name="requiredDefinitions" type="value" depth="1">
             <value>jc.cumulocity.tools.app.docs:Credentials</value>
             <value>jc.cumulocity.tools.app.docs:Credentials.users</value>
@@ -441,13 +442,14 @@ You do NOT need to call this service prior to invoking any of the other c8y serv
         <record name="GET" javaclass="com.wm.util.Values">
           <value name="operationType">GET</value>
           <value name="nsName">/health_GET</value>
-          <value name="description">This service is required by c8y to ascertain whether the micro service is running correctly.
+          <value name="description">##jc.cumulocity.tools.app:health##
+
+This service is required by c8y to ascertain whether the micro service is running correctly.
 This service return a json object with a single attribute status set to "UP" if it can successfully connect to its c8y tenant or "DOWN" in any other case.
 
-NOTE
------
+**NOTE**  
 A proxy will have to run in side-card with this runtime in order to manage the link between the port 80 imposed by c8y for all calls and the 5555, which is the default
-webMethods port. The same proxy should be configure to map /health end-point dicated by c8y to the health API of this service, namely /rad/jc.cumulocity:tools/health
+webMethods port. The same proxy should be configure to map /health end-point dictated by c8y to the health API of this service, namely /rad/jc.cumulocity:tools/health
 
 e.g.
 

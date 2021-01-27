@@ -34,13 +34,14 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">This service is required by c8y to ascertain whether the micro service is running correctly.
+  <value name="node_comment">##jc.cumulocity.tools.app:health##
+
+This service is required by c8y to ascertain whether the micro service is running correctly.
 This service return a json object with a single attribute status set to "UP" if it can successfully connect to its c8y tenant or "DOWN" in any other case.
 
-NOTE
------
+**NOTE**  
 A proxy will have to run in side-card with this runtime in order to manage the link between the port 80 imposed by c8y for all calls and the 5555, which is the default
-webMethods port. The same proxy should be configure to map /health end-point dicated by c8y to the health API of this service, namely /rad/jc.cumulocity:tools/health
+webMethods port. The same proxy should be configure to map /health end-point dictated by c8y to the health API of this service, namely /rad/jc.cumulocity:tools/health
 
 e.g.
 

@@ -14,11 +14,6 @@
 </MAP>
 </INVOKE>
 
-<LOOP TIMEOUT="" IN-ARRAY="/credentials/users">
-  <COMMENT></COMMENT>
-
-  <!-- nodes -->
-
 <BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
   <COMMENT>if IDType not internal, lookup internalID first!</COMMENT>
 
@@ -372,17 +367,6 @@
         <value name="modifiable">true</value>
         <value name="rec_ref">jc.cumulocity.tools.app.docs:Credentials</value>
       </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">unknown</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">$iteration</value>
-        <value name="field_type">string</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -390,42 +374,6 @@
 </MAPSOURCE>
 
   <!-- nodes -->
-
-<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/method;1;0">
-  <DATA ENCODING="XMLValues" I18N="true">
-
-<Values version="2.0">
-  <value name="xml">get</value>
-  <record name="type" javaclass="com.wm.util.Values">
-    <value name="node_type">unknown</value>
-    <value name="node_subtype">unknown</value>
-    <value name="node_comment"></value>
-    <record name="node_hints" javaclass="com.wm.util.Values">
-      <null name="field_usereditable"/>
-      <value name="field_largerEditor">false</value>
-      <value name="field_password">false</value>
-    </record>
-    <value name="is_public">false</value>
-    <value name="field_name">method</value>
-    <value name="field_type">string</value>
-    <value name="field_dim">0</value>
-    <array name="field_options" type="value" depth="1">
-      <value>get</value>
-      <value>post</value>
-      <value>head</value>
-      <value>put</value>
-      <value>patch</value>
-      <value>delete</value>
-      <value>options</value>
-      <value>trace</value>
-    </array>
-    <value name="nillable">true</value>
-    <value name="form_qualified">false</value>
-    <value name="is_global">false</value>
-  </record>
-</Values>
-</DATA>
-</MAPSET>
 
 <MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/url;1;0">
   <DATA ENCODING="XMLValues" I18N="true">
@@ -455,10 +403,10 @@
 </DATA>
 </MAPSET>
 
-<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/users;2;0/password;1;0" TO="/auth;2;0/pass;1;0">
+<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/defaultUser;1;0" TO="/auth;2;0/user;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/users;2;0/name;1;0" TO="/auth;2;0/user;1;0">
+<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/defaultPassword;1;0" TO="/auth;2;0/pass;1;0">
 </MAPCOPY>
 </MAP>
 
@@ -516,42 +464,6 @@
         <value name="nillable">true</value>
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
-      </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">record</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">auth</value>
-        <value name="field_type">record</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-        <array name="rec_fields" type="record" depth="1">
-          <record javaclass="com.wm.util.Values">
-            <value name="node_type">unknown</value>
-            <value name="node_subtype">unknown</value>
-            <value name="is_public">false</value>
-            <value name="field_name">user</value>
-            <value name="field_type">string</value>
-            <value name="field_dim">0</value>
-            <value name="nillable">true</value>
-            <value name="form_qualified">false</value>
-            <value name="is_global">false</value>
-          </record>
-          <record javaclass="com.wm.util.Values">
-            <value name="node_type">unknown</value>
-            <value name="node_subtype">unknown</value>
-            <value name="is_public">false</value>
-            <value name="field_name">pass</value>
-            <value name="field_type">string</value>
-            <value name="field_dim">0</value>
-            <value name="nillable">true</value>
-            <value name="form_qualified">false</value>
-            <value name="is_global">false</value>
-          </record>
-        </array>
-        <value name="modifiable">true</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -655,6 +567,42 @@
           </record>
         </array>
         <value name="rec_closed">true</value>
+        <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">auth</value>
+        <value name="field_type">record</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <array name="rec_fields" type="record" depth="1">
+          <record javaclass="com.wm.util.Values">
+            <value name="node_type">unknown</value>
+            <value name="node_subtype">unknown</value>
+            <value name="is_public">false</value>
+            <value name="field_name">user</value>
+            <value name="field_type">string</value>
+            <value name="field_dim">0</value>
+            <value name="nillable">true</value>
+            <value name="form_qualified">false</value>
+            <value name="is_global">false</value>
+          </record>
+          <record javaclass="com.wm.util.Values">
+            <value name="node_type">unknown</value>
+            <value name="node_subtype">unknown</value>
+            <value name="is_public">false</value>
+            <value name="field_name">pass</value>
+            <value name="field_type">string</value>
+            <value name="field_dim">0</value>
+            <value name="nillable">true</value>
+            <value name="form_qualified">false</value>
+            <value name="is_global">false</value>
+          </record>
+        </array>
         <value name="modifiable">true</value>
       </record>
       <record javaclass="com.wm.util.Values">
@@ -1320,17 +1268,6 @@
         <value name="modifiable">true</value>
         <value name="rec_ref">jc.cumulocity.tools.app.docs:Credentials</value>
       </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">unknown</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">$iteration</value>
-        <value name="field_type">string</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -1750,17 +1687,6 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
       </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">unknown</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">$iteration</value>
-        <value name="field_type">string</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -1768,42 +1694,6 @@
 </MAPSOURCE>
 
   <!-- nodes -->
-
-<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/method;1;0">
-  <DATA ENCODING="XMLValues" I18N="true">
-
-<Values version="2.0">
-  <value name="xml">get</value>
-  <record name="type" javaclass="com.wm.util.Values">
-    <value name="node_type">unknown</value>
-    <value name="node_subtype">unknown</value>
-    <value name="node_comment"></value>
-    <record name="node_hints" javaclass="com.wm.util.Values">
-      <value name="field_usereditable">true</value>
-      <value name="field_largerEditor">false</value>
-      <value name="field_password">false</value>
-    </record>
-    <value name="is_public">false</value>
-    <value name="field_name">method</value>
-    <value name="field_type">string</value>
-    <value name="field_dim">0</value>
-    <array name="field_options" type="value" depth="1">
-      <value>get</value>
-      <value>post</value>
-      <value>head</value>
-      <value>put</value>
-      <value>patch</value>
-      <value>delete</value>
-      <value>options</value>
-      <value>trace</value>
-    </array>
-    <value name="nillable">true</value>
-    <value name="form_qualified">false</value>
-    <value name="is_global">false</value>
-  </record>
-</Values>
-</DATA>
-</MAPSET>
 
 <MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/url;1;0">
   <DATA ENCODING="XMLValues" I18N="true">
@@ -1833,10 +1723,10 @@
 </DATA>
 </MAPSET>
 
-<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/users;2;0/name;1;0" TO="/auth;2;0/user;1;0">
+<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/defaultUser;1;0" TO="/auth;2;0/user;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/users;2;0/password;1;0" TO="/auth;2;0/pass;1;0">
+<MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/defaultPassword;1;0" TO="/auth;2;0/pass;1;0">
 </MAPCOPY>
 </MAP>
 
@@ -1869,7 +1759,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">method</value>
+        <value name="field_name">source</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -1880,7 +1770,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">source</value>
+        <value name="field_name">from</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -1922,17 +1812,6 @@
           </record>
         </array>
         <value name="modifiable">true</value>
-      </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">unknown</value>
-        <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">from</value>
-        <value name="field_type">string</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">unknown</value>
@@ -2300,7 +2179,6 @@
 </MAPDELETE>
 </MAP>
 </INVOKE>
-</LOOP>
 
 <MAP TIMEOUT="" MODE="STANDALONE">
   <COMMENT>CLEANUP</COMMENT>

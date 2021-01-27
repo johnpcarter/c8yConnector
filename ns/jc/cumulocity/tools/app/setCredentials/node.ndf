@@ -173,16 +173,30 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">Sets the credentials to be used to connect to the back-end c8y tenant.
-Only use this service if you agent is running outside of Cumulocity remotely. You need only configure the following fields
+  <value name="node_comment">##jc.cumulocity.tools.app:setCredentials##
+
+Sets the credentials to be used to connect to the back-end c8y tenant.
+
+**NOTE** This service is provided for remote debugging purposes only, Instead you should set the credentials via container environment variable as shown below. 
+This is done automatically in the case of a cumulocity hosted micro service.
 
 C8Y_BASEURL - Url of the cumulocity
 C8Y_BOOTSTRAP_TENANT - the of the tenant where the application was created
 C8Y_BOOTSTRAP_USER - Only required if no user login can be provided 
 C8Y_BOOTSTRAP_PASSWORD - Only required if no user login can be provided
 
-Calling this service ensures that all calls the c8y services in this package will use the provided credentials rather than those provided via the local
-environment.</value>
+Calling this service ensures that all calls the c8y services in this package will use the provided credentials rather than those provided via the local environment.
+
+Use the following API call to obtain your application's bootstrap credentials;
+
+*$ curl "https://&lt;TENANT_NAME&gt;.cumulocity.com/application/applications/&lt;APP_ID&gt;/bootstrapUser" -u '&lt;USER_ID&gt;:&lt;PASSWORD&gt;'  
+
+If you have not created your application in Cumulocity, you can connect using a user login via the following inputs instead.
+
+C8Y_TENANT
+C8Y_USER
+C8Y_PASSWORD
+</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

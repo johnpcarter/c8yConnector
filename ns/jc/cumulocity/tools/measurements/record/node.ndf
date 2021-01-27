@@ -116,7 +116,18 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.measurements:record##
+
+Records a new set of measurement for the given device.
+
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+c8yIdOfDevice - Either the internal c8y id or external id of the device to which the operation is associated.
+measurements - list of measurements to be recorded.
+
+**OUTPUT**
+none</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

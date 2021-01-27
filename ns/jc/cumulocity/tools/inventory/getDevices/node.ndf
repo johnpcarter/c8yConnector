@@ -152,7 +152,21 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.inventory:getDevices##
+
+Retrieves a list of paged devices from Cumulocity with an optional filter for the type of device. 
+You can specify both the page size and the current page to return via the pageSize (default is 50) and currentPage (default is 1) inputs respectively.
+
+**NOTE** Only managed objects with fragment '*c8y_IsDevice*' will be returned.
+
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+type - Optional filter to return only devices for the given type.
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of events to return in a single request, default is 50 if blank
+
+**OUTPUT**
+results - A page of managed object representing devices.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

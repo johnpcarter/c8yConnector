@@ -26,7 +26,7 @@ function swapRows()
 
 </SCRIPT>
 </head>
-<body class="topbar" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+<body class="topbar" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" style="background: #fafafa; align-content: center">
     <div class="tdmasthead" id="top" height="50px">
 		<div style="float:right;padding: 10px">
 			<span style="color: white; line-height: 30px">Documentation</span>
@@ -35,14 +35,676 @@ function swapRows()
             <img src="resources/webMethods-c8y-logo.svg" height="50px" alt="webMethods Cumulocity Services"/>
         </div>
     </div>
-    <div align="center">
-        <div style="margin-top: 60px; font-weight: 400; font-size: 24px"><span style="color:#0899CC">Cumulocity MicroService Tools</span></div>
-    </div>
-    <div align="center">
-        <div style="margin-top: 40px; font-weight: 400; font-size: 14px; max-width: 600px">Provides a set of services to allow access to your c8y tenant. Use in conjunction with your webMethods based agents to integrate any device type with Cumulocity.</div>
-    </div>
-    <div style="width:80%; margin-left: auto; margin-right: auto ;">
-		
+	
+    <div style="padding: 20px; padding-top: 50px; width: 80%; margin-left: auto; margin-right: auto">
+        <h2 style="font-size: 36px; margin: 0; font-family: sans-serif; color: #3b4151;">Cumulocity MicroService Tools</h2>
+        <div style="margin-top: 40px; font-weight: 400; font-size: 14px;">Provides a set of services to allow access to your c8y tenant. Use in conjunction with your webMethods based agents to integrate any device type with Cumulocity.
+			<br>
+			Below is the documentation of the available services, the documentation is also available in Designer under the comments section of each service.
+		</div>
 	</div>
+	
+	<div style="margin-top: 20px; padding: 20px; width: 95%; background: lightgreen; margin-left: auto; margin-right: auto">
+		<div style="width: 95%; margin-left: auto; margin-right: auto">
+			<div>
+				<span style="font-size: 24px;margin: 20 0 5px;font-family: sans-serif;color: #3b4151; line-height: 20px"><b>Alarms</b></span>
+				<small style="padding-left: 30px; line-height: 20px">Create/update and retrieve alarms associated with device</small>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.alarms:activate</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">Retrieves all measurements found for the given device and time period. The device can be specified via its c8y internal id or one of the devices external id's. events are returned in pages. You can specify both the page size and the current page to return via the pageSize (default is 50) and currentPage (default is 1) inputs respectively.
+				<hr>
+				<pre>
+**INPUT**
+
+- tenant: Only provide if you want to only query the specific tenant, leave blank to query first avaible tenant.
+- filter
+   - idType: Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+   - deviceId: Either the internal c8y id or external id of the device.
+   - from: Start date from which filter measurements, date format is ISO 8601 - yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+   - to: End date from which to filter measurements, date format is ISO 8601 - yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of events to return in a single request, default is 50 if blank
+					
+**OUTPUT**
+- measurements: paged list of measurement associated with given device, limited to page size.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.alarms:get</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">Retrieves all alarms found for the given device. The device can be specified via its c8y internal id or one of the devices external id's.
+					alarms are returned in pages. You can specify both the page size and the current page to return via the pageSize (default is 50) and currentPage (default is 1) inputs respectively.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first avaible tenant.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+deviceId - Either the internal c8y id or external id of the device.
+currentPage - leave blank to return the first page, otherwise returns the alarms at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of alarms to return in a single request, default is 50 if blank
+
+**OUTPUT**
+alarms - List of alarms of associated with given device, limited to page size.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.alarms:update</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">Updates the status of an existing alarm.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+deviceId - Either the internal c8y id or external id of the device to which the alarm is associated.
+status - One of ACTIVE, ACKNOWLEDGED or CLEARED
+
+**OUTPUT**
+none
+				</pre>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div style="margin-top: 20px; padding: 20px; width: 95%; background: lightpink; margin-left: auto; margin-right: auto">
+		<div style="width: 95%; margin-left: auto; margin-right: auto">
+			<div>
+				<span style="font-size: 24px;margin: 20 0 5px;font-family: sans-serif;color: #3b4151; line-height: 20px"><b>App</b></span>
+				<small style="padding-left: 30px; line-height: 20px">Micro service app authentication</small>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.app:bootstrapUser</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">Retrieves the app bootstrap user credentials, which are then used to fetch app subscriptions and the their app credentials. 
+					
+				</br></br>**NOTE** - You should not need to use this service as it is integrated with the jc.cumulocity.tools.app:credentials service.
+				</br></br>Refer to the section on <a href="https://cumulocity.com/guides/microservice-sdk/concept/#security">Micro Service security</a> for more information.
+				
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.app:credentials</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">Retrieve all subscriptions to this agent via a GET request using bootstrap credentials.
+					Credentials provider tenant information and the logins to be used in order to connect to each c8y tenant.
+					</br></br>
+					The default user/password refers to the first tenant found in the list and should be used when querying as long
+					as any updates have been written to all tenants.
+					</br></br>
+					Refer to the cumulocity documentation on <a href="https://cumulocity.com/guides/microservice-sdk/concept/#isolation-levels">multi tenant micro services</a> for more information.
+					</br></br>
+					** NOTE ** - You do NOT need to call this service prior to invoking any of the other c8y services.
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.app::health</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">This service is required by c8y to ascertain whether the micro service is running correctly.
+					This service return a json object with a single attribute status set to "UP" if it can successfully connect to its c8y tenant or "DOWN" in any other case.
+					</br></br>
+					**NOTE**  
+					A proxy will have to run in side-card with this runtime in order to manage the link between the port 80 imposed by c8y for all calls and the 5555, which is the default
+					webMethods port. The same proxy should be configure to map /health end-point dictated by c8y to the health API of this service, namely /rad/jc.cumulocity:tools/health
+				<hr>
+				e.g.
+				<pre>
+apache proxy 2.4 vhosts example
+
+<VirtualHost *:80>
+   ServerName softwareag.com
+   #DocumentRoot /var/www/html
+
+   ProxyPreserveHost On
+   
+   ProxyPass /health http://localhost:5555/rad/jc.cumulocity:tools/health
+   ProxyPass /ping http://localhost:5555/invoke/wm.server/ping
+   ProxyPass / http://localhost:5555/
+   
+   ProxyPassReverse / http://localhost:5555/
+
+   RequestHeader unset Authorization
+</VirtualHost> 
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.app:registerApp</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Creates a new app reference in c8y. You should only use this if you want to create your app automatically from a remote server.
+					Cumulocity hosted micro services have to be declared in advance of upload and hence this service is not needed.
+					</br></br>
+					This step is required so that you can obtain a bootstrap user for your micro service application/agent.
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.app:setCredentials</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">					
+					Sets the credentials to be used to connect to the back-end c8y tenant.
+					</br></br>
+					**NOTE** This service is provided for remote debugging purposes only, Instead you should set the credentials via container environment variable as shown below. 
+					This is done automatically in the case of a cumulocity hosted micro service.
+					<pre>
+C8Y_BASEURL - Url of the cumulocity
+C8Y_BOOTSTRAP_TENANT - the of the tenant where the application was created
+C8Y_BOOTSTRAP_USER - Only required if no user login can be provided 
+C8Y_BOOTSTRAP_PASSWORD - Only required if no user login can be provided
+					
+Calling this service ensures that all calls the c8y services in this package will use the provided credentials rather than those provided via the local environment.
+					
+Use the following API call to obtain your application's bootstrap credentials;
+					
+*$ curl "https://{TENANT_NAME}.cumulocity.com/application/applications/{APP_ID}/bootstrapUser" -u '{USER_ID}:{PASSWORD}'  
+					
+If you have not created your application in Cumulocity, you can connect using a user login via the following inputs instead.
+					
+C8Y_TENANT
+C8Y_USER
+C8Y_PASSWORD
+				</pre>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
+	<div style="margin-top: 20px; padding: 20px; width: 95%; background: yellowgreen; margin-left: auto; margin-right: auto">
+		<div style="width: 95%; margin-left: auto; margin-right: auto">
+			<div>
+				<span style="font-size: 24px;margin: 20 0 5px;font-family: sans-serif;color: #3b4151; line-height: 20px"><b>Events</b></span>
+				<small style="padding-left: 30px; line-height: 20px">Create/update and retrieve events associated with devices</small>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.events:add</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">Posts a new event to all c8y tenants subscribing to your application, returns the c8y id of the event for the last tenant only
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+deviceId - Either the internal c8y id or external id of the device to which the event is associated.
+type - label to be associated with the event.
+text - arbitrary description of the event.
+eventArgs - Optional custom attributes to be included in event, can be string, number, boolean or even complex document types.
+
+**OUTPUT**
+c8yOfEvent - the c8y internal id of the new event, return only last instance if posting to multiple instances.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.events:get</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">Retrieves all events found for the given device. The device can be specified via its c8y internal id or one of the devices external id's.
+					events are returned in pages. You can specify both the page size and the current page to return via the pageSize (default is 50) and currentPage (default is 1) inputs respectively.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+deviceId - Either the internal c8y id or external id of the device.
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of events to return in a single request, default is 50 if blank
+
+**OUTPUT**
+events - List of events of associated with given device, limited to page size.
+				</pre>
+				</div>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+	
+	<div style="margin-top: 20px; padding: 20px; width: 95%; background: aqua; margin-left: auto; margin-right: auto">
+		<div style="width: 95%; margin-left: auto; margin-right: auto">
+			<div>
+				<span style="font-size: 24px;margin: 20 0 5px;font-family: sans-serif;color: #3b4151; line-height: 20px"><b>Inventory</b></span>
+				<small style="padding-left: 30px; line-height: 20px">Create/update and retrieve managed object from c8y</small>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:createGroup</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Creates a new group in Cumulocity. You can specify a top level folder or create a sub-folder in a parent folder if you provide the c8y internal id of the parent
+					via the optional input parent. 
+					</br></br>
+					**NOTE** The service first checks if an asset with the given external id exists already, in which case it does nothing.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+id - External id of the group to be created.
+name - label to be associated with the group.
+description - optional text set to c8y_Notes in c8y.
+args - Optional custom attributes to be included in event, can be string, number, boolean or even complex document types.
+position - Optional GPS position to be saved as c8y_Position in the managed object.
+parent/c8yId - Internal id of an optional parent group. If provided this group will be added as a sub group and only visible via 
+the parent group hierarchy.
+
+**OUTPUT**
+groupId - the c8y internal id of the new event, return only last instance if posting to multiple instances.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:deleteObject</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Deletes the managed object (group/device etc) in Cumulocity for the given id.
+					</br></br>
+					**NOTE** - Will trigger exception if the object does not exist!
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+id - External id of the object to be deleted.
+
+**OUTPUT**
+None
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:get</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Retrieves the managed object (group/device etc) in Cumulocity for the given id.
+					</br></br>
+					**NOTE** - Will trigger exception if the object does not exist!
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+id - External id of the object to be fetched.
+
+**OUTPUT**
+managedObject - The managed object in c8y matching the given id.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:getDevices</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Retrieves a list of paged devices from Cumulocity with an optional filter for the type of device. 
+					You can specify both the page size and the current page to return via the pageSize (default is 50) and currentPage (default is 1) inputs respectively.
+					</br></br>
+					**NOTE** Only managed objects with fragment '*c8y_IsDevice*' will be returned.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+type - Optional filter to return only devices for the given type.
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of events to return in a single request, default is 50 if blank
+
+**OUTPUT**
+results - A page of managed object representing devices.
+				</pre>
+				</div>
+			</div>
+
+						
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:getGroups</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Retrieves a list of paged groups from Cumulocity. 
+					You can specify both the page size and the current page to return via the pageSize (default is 50) and currentPage (default is 1) inputs respectively.
+					</br></br>
+					**NOTE** Only managed objects with fragment '* c8y_IsDeviceGroup*' will be returned.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of events to return in a single request, default is 50 if blank
+
+**OUTPUT**
+results - A page of managed object representing groups.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:post</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Posts an arbitrary managed object to all c8y tenants subscribing to your application, returns the c8y id of the managed object for the last tenant only
+					</br></br>
+					**NOTE** - This service does not validate if the object already exists, do not use this service if you want to add a device or group to Cumulocity,
+					instead use the services 'jc.cumulocity.tools.inventory:registerDevice' or 'jc.cumulocity.tools.inventory:registerDevice
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+object - The c8y Managed Object to be added.
+args - Optional custom attributes to be included in event, can be string, number, boolean or even complex document types.
+
+**OUTPUT**
+c8yIdOfObject - the c8y internal id of the new object, return only last instance if posting to multiple instances.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:registerDevice</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Create a managed object for the given device in Cumulocity, returns the c8y id of the managed object for the last tenant only i.e. ensure managed object contains 
+					an empty fragment 'c8y_IsDevice'.
+					</br></br>
+					**NOTE** will trigger an exception if an object already exists for one of the given id's. You need to validate this via the service 'jc.cumulocity.tools.inventory:get'
+					prior to calling this service.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+ids - Set of optional external id's and their types to be associated with the created managed object.
+deviceName - label to be given to device in c8y
+deviceType - label for the device type
+supplier - label for the device supplier
+deviceModel - label for the device model attribute
+deviceCategory - custom attribute to help categorise the device.
+network - Networking info to be used by agent to connect to device.
+relayState - Current state of relay i.e. OPEN or CLOSED, only required for relay type devices.
+supportedOperations - List of supported operations e.g. ['c8y_Command', 'c8y_Relay']
+revision - Hardware revision of device
+serialNumber - Optional serial number, will be included in external id's too
+firmware - version of software loaded on device.
+position - Optional GPS position of device, will be mapped to fragment c8y_Position
+responseInterval - Sets the required response interval of device in minutes, c8y will consider the device unavailable if no event or metric 
+                   received in this time frame.
+status - Initial availability of device, one of 'MAINTENANCE', 'AVAILABLE' or 'UNAVAILABLE'
+args - Optional custom attributes to be included in event, can be string, number, boolean or even complex document types.
+isAgent - Set to true if you want to indicate that this device will have child devices for which control notifications need to be processed 
+           (adds the fragment com_cumulocity_model_Agent)
+doNOTCreate - set to true if you only want to retrieve a manageObject that corresponds to your inputs, nothing will be created in c8y
+
+**OUTPUT**
+c8yIdOfObject - the c8y internal id of the new object, return only last instance if posting to multiple instances.
+				</pre>
+				</div>
+			</div>
+
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:search</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Retrieves a list of paged managed objects from Cumulocity matching the given set of queries.
+				<hr>
+				<pre>
+**INPUTS**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of events to return in a single request, default is 50 if blank
+queries
+  - queries/queries 
+	queries/queries/lh - left hand argument of query i.e. namespace of attribute in managed object using dot as name separator. 
+	                      Not required in the case of the 'has' operator.
+	queries/queries/op - Either 'eq', 'ne' for not equal or 'lt' for less than or 'gt' for greater than and 'has'
+	queries/queries/rh - value to be matched with left hand side or in the case of 'has' the element or fragment that must be present.
+	queries/queries/exclusive - Only required if you want to make this query an 'OR' i.e. will not be considered a mandatory query like the others.
+  - queries/matchAll - true if all queries must match, false if only one of the queries need match
+
+**OUTPUT**
+results - A page of managed object matching the queries.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:setGroupForObject</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Adds the given object to the specified group. The group may not necessarily exist yet and dot notation can be used in order
+					to create a group hierarchy.
+					
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if id is an external id, leave empty if providing the internal c8y id of the object.
+id - External or internal id of the object to be added to the group.
+groupId - Optional internal c8y id of the group, leave blank if it is to be created.
+groupPath - The full hierarchy of the group structure to be created, leave blank if groupId has been provided
+description - set as c8y_Notes for the last group in the hierarchy.
+
+**OUTPUT**
+lastGroupId - the c8y internal id of the last group in the hierarchy to which the object is attached directly.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:update</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Updates an existing managed object in all c8y tenants subscribing to your application.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+object - The c8y Managed Object to be updated.
+args - Optional custom attributes to be included in object, can be string, number, boolean or even complex document types.
+
+**OUTPUT**
+none
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.inventory:updateFragment</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Updates the given custom fragments in the managed object.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+args - Custom attributes to be included in object, can be string, number, boolean or even complex document types.
+
+**OUTPUT**
+none
+				</pre>
+				</div>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+	
+	<div style="margin-top: 20px; padding: 20px; width: 95%; background: orange; margin-left: auto; margin-right: auto">
+		<div style="width: 95%; margin-left: auto; margin-right: auto">
+			<div>
+				<span style="font-size: 24px;margin: 20 0 5px;font-family: sans-serif;color: #3b4151; line-height: 20px"><b>Measurements</b></span>
+				<small style="padding-left: 30px; line-height: 20px">Create/update and retrieve measurements associated with devices</small>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.measurements:get</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Retrieves all measurements found for the given device and time period. The device can be specified via its c8y internal id or one of the devices external id's.
+					events are returned in pages. You can specify both the page size and the current page to return via the pageSize (default is 50) and currentPage (default is 1) inputs respectively.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+filter
+  - idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+  - deviceId - Either the internal c8y id or external id of the device.
+  - from - Start date from which filter measurements, date format is ISO 8601 - yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+  - to -  End date from which to filter measurements, date format is ISO 8601 - yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of events to return in a single request, default is 50 if blank
+
+**OUTPUT**
+measurements - paged list of measurement associated with given device, limited to page size.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.measurements:record</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Records a new set of measurement for the given device.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+c8yIdOfDevice - Either the internal c8y id or external id of the device to which the operation is associated.
+measurements - list of measurements to be recorded.
+
+**OUTPUT**
+none
+				</pre>
+				</div>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+	
+	<div style="margin-top: 20px; padding: 20px; width: 95%; background: aquamarine; margin-left: auto; margin-right: auto">
+		<div style="width: 95%; margin-left: auto; margin-right: auto">
+			<div>
+				<span style="font-size: 24px;margin: 20 0 5px;font-family: sans-serif;color: #3b4151; line-height: 20px"><b>Operations</b></span>
+				<small style="padding-left: 30px; line-height: 20px">Create/update and retrieve operations associated with devices</small>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.operations:add</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Posts a new device operation to all c8y tenants subscribing to your application, returns the c8y id of the device operation of the last tenant only
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+deviceId - Either the internal c8y id or external id of the device to which the operation is associated.
+type - label to be associated with the operation.
+description - arbitrary description of the operation.
+details - Optional additional custom fragment to be included in operation body.
+
+**OUTPUT**
+c8yIdOfOperation - the c8y internal id of the new operation, return only last instance if posting to multiple instances.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.operations:get</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Retrieves all operations found for the given device. The device can be specified via its c8y internal id or one of the devices external id's.
+					events are returned in pages. You can specify both the page size and the current page to return via the pageSize (default is 50) and currentPage (default is 1) inputs respectively.
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only query the specific tenant, leave blank to query first available tenant.
+idType - Only required if deviceId is an external id, leave empty if providing the internal c8y id of the device.
+deviceId - Either the internal c8y id or external id of the device.
+currentPage - leave blank to return the first page, otherwise returns the events starting at of the offset of (currentPage * pageSize)
+pageSize - Specify the maximum number of events to return in a single request, default is 50 if blank
+
+**OUTPUT**
+events - List of operations of associated with given device, limited to page size.
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.operations:update</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+						Allows the status of an existing operation to be updated.
+				<hr>
+				<pre>
+
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+c8yIdOfOperation - internal c8y id of operation to be updated.
+status - One of PENDING, EXECUTING, SUCCESSFUL or FAILED
+failureMessage - Required in the case of FAILED
+details - Optional, allows details to be updated.
+
+**OUTPUT**
+none
+				</pre>
+				</div>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+	
+	<div style="margin-top: 20px; padding: 20px; width: 95%; background: lightgoldenrodyellow; margin-left: auto; margin-right: auto">
+		<div style="width: 95%; margin-left: auto; margin-right: auto">
+			<div>
+				<span style="font-size: 24px;margin: 20 0 5px;font-family: sans-serif;color: #3b4151; line-height: 20px"><b>Notifications</b></span>
+				<small style="padding-left: 30px; line-height: 20px">Real time polling of device control operations</small>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.notifications:subscribeToControlUpdates</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+Subscribe to control notifications of child devices belonging to the given agent/device, using either simple polling or via c8y <a href="https://cumulocity.com/guides/reference/real-time-notifications">real time polling</a>
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update to listen for updates from a specific tenants, otherwise first available is used.
+c8yIdOfAgent - c8y internal of the managed object that represents the agent/device to which we have child devices attached.
+callback - The service to be called whenever an event or operation is intercepted 
+		(must implement specification jc.cumulocity.tools.notifications:callbackSignature)
+pollingInterval - Optional, leave blank to use c8y real time polling, otherwise specify the delay in seconds between each batch based polling.
+
+**OUTPUT**
+none
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.notifications:unsubscribe</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					Unsubscribes from real time notifications for the given device/agent
+				<hr>
+				<pre>
+**INPUT**
+tenant - Only provide if you want to only update to listen for updates from a specific tenants, otherwise first available is used.
+c8yIdOfAgent - c8y internal of the managed object that represents the agent/device to which we have child devices attached.
+pollingInterval - Optional, leave blank to use c8y real time polling, otherwise specify the delay in seconds between each batch based polling.
+
+**OUTPUT**
+none
+				</pre>
+				</div>
+			</div>
+			
+			<div style="margin-top: 10px; border: 1px solid gray; padding: 10px; width: 90%; border-radius: 5px; background: rgba(97,175,254,.1)">
+				<span style="font-size: 24px;margin: 0 0 5px;font-family: sans-serif;color: #3b4151; line-height: 30px">jc.cumulocity.tools.notifications:callbackSignature</span><br>
+				<div style="padding-left: 20px; padding-top: 20px">
+					This is a webMethods specification to define the callback signature of the service to be invoked when a pending operation is received for a given device.
+				<hr>
+				<pre>
+**INPUT**
+operation - The received operation to be processed
+agentId - The internal c8y id of the parent device/agent associated with the device.
+
+**OUTPUT**
+status - Result of operation action, either SUCCESSFUL or FAILED
+failureMessage - Only required if status is FAILED, to allow a reason to be recorded with the updated status of the operation
+				</pre>
+				</div>
+			</div>
+			
+			</div>
+		</div>
+	</div>
+	
 </body>
 </html>

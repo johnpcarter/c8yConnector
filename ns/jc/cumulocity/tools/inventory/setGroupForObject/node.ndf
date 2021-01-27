@@ -198,7 +198,21 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.inventory:setGroupForObject##
+
+Adds the given object to the specified group. The group may not necessarily exist yet and dot notation can be used in order
+to create a group hierachy.
+
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+idType - Only required if id is an external id, leave empty if providing the internal c8y id of the object.
+id - External or internal id of the object to be added to the group.
+groupId - Optional internal c8y id of the group, leave blank if it is to be created.
+groupPath - The full hierarchy of the group structure to be created, leave blank if groupId has been provided
+description - set as c8y_Notes for the last group in the hierarchy.
+
+**OUTPUT**
+lastGroupId - the c8y internal id of the last group in the hierarchy to which the object is attached directly.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

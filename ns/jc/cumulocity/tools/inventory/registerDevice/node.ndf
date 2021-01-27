@@ -555,7 +555,37 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.inventory:registerDevice##
+
+Create a managed object for the given device in Cumulocity, returns the c8y id of the managed object for the last tenant only i.e. ensure managed object contains 
+an empty fragment 'c8y_IsDevice'.
+
+**NOTE** will trigger an exception if an object already exists for one of the given id's. You need to validate this via the service 'jc.cumulocity.tools.inventory:get'
+prior to calling this service.
+
+**INPUT**
+tenant - Only provide if you want to only update the specific tenant, leave blank to update all subscribing tenants.
+ids - Set of optional external id's and their types to be associated with the created managed object.
+deviceName - label to be given to device in c8y
+deviceType - label for the device type
+supplier - label for the device supplier
+deviceModel - label for the device model attribute
+deviceCategory - custom attribute to help categorise the device.
+network - Networking info to be used by agent to connect to device.
+relayState - Current state of relay i.e. OPEN or CLOSED, only required for relay type devices.
+supportedOperations - List of supported operations e.g. ['c8y_Command', 'c8y_Relay']
+revision - Hardware revision of device
+serialNumber - Optional serial number, will be included in external id's too
+firmware - version of software loaded on device.
+position - Optional GPS position of device, will be mapped to fragment c8y_Position
+responseInterval - Sets the required repsonse interval of device in minutes, c8y will consider the device unavailable if no event or metric received in this time frame.
+status - Initial availability of device, one of 'MAINTENANCE', 'AVAILABLE' or 'UNAVAILABLE'
+args - Optional custom attributes to be included in event, can be string, number, boolean or even complex document types.
+isAgent - Set to true if you want to indicate that this device will have child devices for which control notifications need to be processed (adds the fragment com_cumulocity_model_Agent)
+doNOTCreate - set to true if you only want to retrieve a manageObject that corresponds to your inputs, nothing will be created in c8y
+
+**OUTPUT**
+c8yIdOfObject - the c8y internal id of the new object, return only last instance if posting to multiple instances.</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

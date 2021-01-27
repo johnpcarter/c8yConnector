@@ -115,7 +115,17 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment"></value>
+  <value name="node_comment">##jc.cumulocity.tools.notifications:callbackSignature##
+
+Callback signature of service to be invoked when a pending operation is received for a given device.
+
+**INPUT**
+operation - The received operation to be processed
+agentId - The internal c8y id of the parent device/agent associated with the device.
+
+**OUTPUT**
+status - Result of operation action, either SUCCESSFUL or FAILED
+failureMessage - Only required if status is FAILED, to allow a reason to be recorded with the updated status of the operation</value>
   <value name="stateless">yes</value>
   <value name="caching">no</value>
   <value name="prefetch">no</value>

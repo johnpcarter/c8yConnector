@@ -4928,7 +4928,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">device</value>
+        <value name="field_name">object</value>
         <value name="field_type">recref</value>
         <value name="field_dim">0</value>
         <value name="wrapper_type">IData</value>
@@ -5189,7 +5189,7 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/deviceInfo;4;0;jc.cumulocity.tools.inventory.docs:ManagedObject" TO="/device;4;0;jc.cumulocity.tools.inventory.docs:ManagedObject">
+<MAPCOPY FROM="/deviceInfo;4;0;jc.cumulocity.tools.inventory.docs:ManagedObject" TO="/object;4;0;jc.cumulocity.tools.inventory.docs:ManagedObject">
 </MAPCOPY>
 </MAP>
 </INVOKE>
@@ -5298,7 +5298,7 @@
         <value name="node_type">record</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">device</value>
+        <value name="field_name">object</value>
         <value name="field_type">recref</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -5594,6 +5594,19 @@
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
         <value name="field_name">device</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">jc.cumulocity.tools.inventory.docs:ManagedObject</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">object</value>
         <value name="field_type">recref</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
