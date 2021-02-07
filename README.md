@@ -89,9 +89,8 @@ From your local environment, run the service
 
 *jc.cumulocity.tools.app:setCredentials*  
 
-and either provide your own credentials via the C8Y_TENANT, C8Y_USER and C8Y_PASSWORD inputs, or you want to use the app credential provide 
-the 'C8Y_BOOSTRAP_TENANT', 'C8Y_BOOTSTRAP_USER' and 'C8Y_BOOTSTRAP_PASSWORD' inputs. Reload the package afterwards if you want the package to automatically 
-send metrics and process operations for your lights.
+and either provide your own credentials via the C8Y_TENANT, C8Y_USER and C8Y_PASSWORD inputs, or you want to use the app's credentials provide 
+the 'C8Y_BOOSTRAP_TENANT', 'C8Y_BOOTSTRAP_USER' and 'C8Y_BOOTSTRAP_PASSWORD' inputs. Reload your own agent package to ensure scheduled jobs or listeners work properly.
 
 If you want to run the docker image independently then set the following environment variables when starting up the container
 
