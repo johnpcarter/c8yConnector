@@ -112,9 +112,9 @@
       <value name="modifiable">true</value>
     </record>
   </record>
-  <value name="node_comment">##jc.cumulocity.tools.notifications:subscribeToControlUpdates##
+  <value name="node_comment">##jc.cumulocity.tools.notifications:subscribeToOperationUpdates##
 
-Subscribe to control notifications of child devices belonging to the given agent/device, using either simple polling or via c8y [real time polling](https://cumulocity.com/guides/reference/real-time-notifications/)
+Subscribe to operation notifications of child devices belonging to the given agent/device, using either simple polling or via c8y [real time polling](https://cumulocity.com/guides/reference/real-time-notifications/)
 
 **INPUT**
 tenant - Only provide if you want to only update to listen for updates from a specific tenants, otherwise first available is used.
