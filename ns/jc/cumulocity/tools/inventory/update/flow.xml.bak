@@ -685,7 +685,7 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/device;4;0;jc.cumulocity.tools.inventory.docs:ManagedObject" TO="/document;2;0">
+<MAPCOPY FROM="/object;4;0;jc.cumulocity.tools.inventory.docs:ManagedObject" TO="/document;2;0">
 </MAPCOPY>
 </MAP>
 
@@ -1017,7 +1017,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">%/credentials/endPoint%/inventory/managedObjects/%device/id%</value>
+  <value name="xml">%/credentials/endPoint%/inventory/managedObjects/%object/id%</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">unknown</value>
     <value name="node_subtype">unknown</value>
