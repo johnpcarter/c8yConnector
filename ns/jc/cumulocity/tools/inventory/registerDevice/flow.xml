@@ -2533,6 +2533,15 @@
 </MAP>
 </BRANCH>
 
+<INVOKE TIMEOUT="" SERVICE="jc.cumulocity.tools.app:credentials" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+</MAP>
+</INVOKE>
+
 <BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
   <COMMENT>check if doNOTCreate is not set to true</COMMENT>
 
@@ -2542,15 +2551,6 @@
   <COMMENT></COMMENT>
 
   <!-- nodes -->
-
-<INVOKE TIMEOUT="" SERVICE="jc.cumulocity.tools.app:credentials" VALIDATE-IN="$none" VALIDATE-OUT="$none">
-  <COMMENT></COMMENT>
-
-  <!-- nodes -->
-
-<MAP MODE="INPUT">
-</MAP>
-</INVOKE>
 
 <INVOKE TIMEOUT="" SERVICE="pub.json:documentToJSONString" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
