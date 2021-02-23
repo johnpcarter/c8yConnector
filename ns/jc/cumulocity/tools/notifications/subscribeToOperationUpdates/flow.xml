@@ -2240,7 +2240,7 @@
 </INVOKE>
 
 <INVOKE TIMEOUT="" SERVICE="jc.cumulocity.tools._priv:http" VALIDATE-IN="$none" VALIDATE-OUT="$none">
-  <COMMENT>POST - devicecontrol/notifications - subscribe - this is where events will start to be queued</COMMENT>
+  <COMMENT>POST - /notification/operations - subscribe - this is where events will start to be queued</COMMENT>
 
   <!-- nodes -->
 
@@ -2662,34 +2662,6 @@
 </DATA>
 </MAPSET>
 
-<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/url;1;0">
-  <DATA ENCODING="XMLValues" I18N="true">
-
-<Values version="2.0">
-  <value name="xml">%credentials/endPoint%/devicecontrol/notifications</value>
-  <record name="type" javaclass="com.wm.util.Values">
-    <value name="node_type">record</value>
-    <value name="node_subtype">unknown</value>
-    <value name="node_comment"></value>
-    <record name="node_hints" javaclass="com.wm.util.Values">
-      <value name="field_usereditable">true</value>
-      <value name="field_largerEditor">false</value>
-      <value name="field_password">false</value>
-    </record>
-    <value name="is_public">false</value>
-    <value name="field_name">url</value>
-    <value name="field_type">string</value>
-    <value name="field_dim">0</value>
-    <array name="field_options" type="value" depth="1">
-    </array>
-    <value name="nillable">true</value>
-    <value name="form_qualified">false</value>
-    <value name="is_global">false</value>
-  </record>
-</Values>
-</DATA>
-</MAPSET>
-
 <MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/payload;1;0">
   <DATA ENCODING="XMLValues" I18N="true">
 
@@ -2727,6 +2699,34 @@
 
 <MAPCOPY FROM="/credentials;4;0;jc.cumulocity.tools.app.docs:Credentials/defaultPassword;1;0" TO="/auth;2;0/pass;1;0">
 </MAPCOPY>
+
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/url;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">%credentials/endPoint%/notification/operations</value>
+  <record name="type" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="node_comment"></value>
+    <record name="node_hints" javaclass="com.wm.util.Values">
+      <value name="field_usereditable">true</value>
+      <value name="field_largerEditor">false</value>
+      <value name="field_password">false</value>
+    </record>
+    <value name="is_public">false</value>
+    <value name="field_name">url</value>
+    <value name="field_type">string</value>
+    <value name="field_dim">0</value>
+    <array name="field_options" type="value" depth="1">
+    </array>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+  </record>
+</Values>
+</DATA>
+</MAPSET>
 </MAP>
 
 <MAP MODE="OUTPUT">
@@ -3718,7 +3718,7 @@
   <value name="xml">{
   "channel": "/meta/subscribe",
   "clientId": "%clientId%",
-  "subscription": "/devicecontrol/%c8yIdOfAgent%"
+  "subscription": "/operations/%c8yIdOfAgent%"
 }</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">record</value>
@@ -8011,10 +8011,6 @@
 <MAPDELETE FIELD="/taskAdded;1;0">
 </MAPDELETE>
 </MAP>
-</INVOKE>
-
-<INVOKE TIMEOUT="" SERVICE="pub.flow:tracePipeline" VALIDATE-IN="$none" VALIDATE-OUT="$none">
-  <COMMENT></COMMENT>
 </INVOKE>
 
 <EXIT FROM="$flow" SIGNAL="FAILURE" FAILURE-MESSAGE="Subscription failed due to %failureMessage%">
