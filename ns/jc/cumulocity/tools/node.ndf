@@ -6,6 +6,9 @@
   <value name="node_nsName">jc.cumulocity:tools</value>
   <value name="node_pkg">c8yConnector</value>
   <value name="is_public">false</value>
+  <null name="sourceUri"/>
+  <null name="swaggerUrl"/>
+  <Boolean name="modifiable">true</Boolean>
   <record name="generalInfo" javaclass="com.wm.util.Values">
     <value name="specVersion">2.0</value>
     <value name="hostName">localhost:5555</value>
@@ -35,9 +38,6 @@
       <null name="licenseUrl"/>
     </record>
   </record>
-  <null name="sourceUri"/>
-  <null name="swaggerUrl"/>
-  <Boolean name="modifiable">true</Boolean>
   <record name="restDefinitions" javaclass="com.wm.util.Values">
     <record name="/admin_GET_$response" javaclass="com.wm.util.Values">
       <value name="name">admin_GET_response</value>
@@ -56,7 +56,7 @@
           <null name="defaultValue"/>
           <value name="refDefinition">jc.cumulocity.tools.app.docs:Credentials</value>
           <value name="definitionName">Credentials</value>
-          <Boolean name="includeInRad">false</Boolean>
+          <Boolean name="includeInRad">true</Boolean>
         </record>
       </record>
     </record>
@@ -122,7 +122,7 @@
           <null name="defaultValue"/>
           <value name="refDefinition">jc.cumulocity.tools.app.docs:Credentials.users</value>
           <value name="definitionName">users</value>
-          <Boolean name="includeInRad">false</Boolean>
+          <Boolean name="includeInRad">true</Boolean>
         </record>
         <record name="endPoint" javaclass="com.wm.util.Values">
           <value name="name">endPoint</value>
